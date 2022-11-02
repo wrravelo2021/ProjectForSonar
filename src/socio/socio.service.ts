@@ -51,10 +51,10 @@ export class SocioService {
       );
     }
 
-    const persistedSocio: SocioEntity = await this.socioRepository.findOne({
+    const persisted_socio: SocioEntity = await this.socioRepository.findOne({
       where: { id: `${id}` },
     });
-    if (!persistedSocio)
+    if (!persisted_socio)
       throw new BusinessLogicException(
         'The socio with the given id was not found',
         BusinessError.NOT_FOUND,

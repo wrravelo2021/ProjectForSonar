@@ -45,10 +45,10 @@ export class ClubService {
   }
 
   async update(id: string, club: ClubEntity): Promise<ClubEntity> {
-    const persistedClub: ClubEntity = await this.clubRepository.findOne({
+    const persisted_club: ClubEntity = await this.clubRepository.findOne({
       where: { id: `${id}` },
     });
-    if (!persistedClub)
+    if (!persisted_club)
       throw new BusinessLogicException(
         'The club with the given id was not found',
         BusinessError.NOT_FOUND,
@@ -60,7 +60,7 @@ export class ClubService {
       );
     }
 
-    club.id = id;
+    club.id = id; // Assign club id
     return await this.clubRepository.save(club);
   }
 

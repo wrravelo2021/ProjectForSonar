@@ -131,20 +131,20 @@ export class ClubSocioService {
     const club: ClubEntity = await this.clubRepository.findOne({
       where: { id: clubId },
       relations: ['socios'],
-    });
+    })
     if (!club)
       throw new BusinessLogicException(
         'The club with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 
-    const clubSocio: SocioEntity = club.socios.find((e) => e.id === socio.id);
+    const club_socio: SocioEntity = club.socios.find((e) => e.id === socio.id);
 
-    if (!clubSocio)
+    if (!club_socio)
       throw new BusinessLogicException(
         'The socio with the given id is not associated to the club',
         BusinessError.PRECONDITION_FAILED,
-      );
+      ); // Throw error if socio id not found
 
     club.socios = club.socios.filter((e) => e.id !== socioId);
     await this.clubRepository.save(club);
