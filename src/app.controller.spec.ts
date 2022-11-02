@@ -9,9 +9,9 @@ describe('AppController', () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
       providers: [AppService],
-    }).compile();
+    }).compile()
 
-    appController = app.get<AppController>(AppController);
+    appController = app.get<AppController>(AppController)
   });
 
   describe('root', () => {
