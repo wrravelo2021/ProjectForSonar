@@ -112,8 +112,13 @@ export class ClubSocioService {
         id was not found';
         throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
       }
+
+      if (socios.length <= 0) {
+        continue;
+      }
     }
 
+    void this.validateSocios(socios);
     club.socios = socios;
     return await this.clubRepository.save(club);
   }
@@ -148,5 +153,13 @@ export class ClubSocioService {
 
     club.socios = club.socios.filter((e) => e.id !== socioId);
     return await this.clubRepository.save(club);
+  }
+
+  validateSocios(socios) {
+    if (!socios) {
+      const error = 'The socios are \
+        empty';
+      throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
+    }
   }
 }
