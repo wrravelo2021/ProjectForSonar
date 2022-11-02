@@ -7,6 +7,7 @@ import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
+import { of } from 'rxjs';
 @Injectable()
 export class ClubSocioService {
   constructor(
@@ -159,6 +160,20 @@ export class ClubSocioService {
     if (!socios) {
       const error = 'The socios are \
         empty';
+      throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
+    }
+  }
+
+  validateClub(club) {
+    if (!club) {
+      throw 'Invalid club';
+    }
+  }
+
+  validateSocio(socio) {
+    if (socio == null) {
+      const error = 'The socio is \
+        not valid';
       throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
     }
   }
