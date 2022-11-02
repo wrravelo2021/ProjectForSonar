@@ -98,21 +98,20 @@ export class ClubSocioService {
       relations: ['socios'],
     });
 
-    if (!club)
-      throw new BusinessLogicException(
-        'The club with the given id was not found',
-        BusinessError.NOT_FOUND,
-      );
-
+    if (!club) {
+      const error = 'The club with the given \
+      id was not found';
+      throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
+    }
     for (let i = 0; i < socios.length; i++) {
       const storedSocio = await this.socioRepository.findOne({
         where: { id: socios[i].id },
       });
-      if (!storedSocio)
-        throw new BusinessLogicException(
-          'The socio with the given id was not found',
-          BusinessError.NOT_FOUND,
-        );
+      if (!storedSocio) {
+        const error = 'The socio with the given \
+        id was not found';
+        throw new BusinessLogicException(error, BusinessError.NOT_FOUND);
+      }
     }
 
     club.socios = socios;
