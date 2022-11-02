@@ -147,6 +147,6 @@ export class ClubSocioService {
       ); // Throw error if socio id not found
 
     club.socios = club.socios.filter((e) => e.id !== socioId);
-    await this.clubRepository.save(club);
+    return await this.clubRepository.save(club);
   }
 }

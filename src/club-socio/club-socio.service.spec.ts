@@ -26,6 +26,9 @@ describe('ClubSocioService', () => {
         birthday: new Date(),
         clubs: [],
       });
+      if (!socio) {
+        continue;
+      }
       sociosList.push(socio);
     }
 
