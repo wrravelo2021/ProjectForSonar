@@ -88,7 +88,8 @@ describe('ClubService', () => {
 
   it('update should modify a club', async () => {
     const club: ClubEntity = clubsList[0];
-    club.name = 'New name';
+    club.name = 'New \
+    name';
     const updatedClub: ClubEntity = await service.update(club.id, club);
     expect(updatedClub).not.toBeNull();
     const storedClub: ClubEntity = await repository.findOne({
