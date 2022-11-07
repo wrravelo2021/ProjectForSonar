@@ -166,7 +166,7 @@ export class ClubSocioService {
 
   validateClub(club) {
     if (!club) {
-      throw 'Invalid club';
+      throw new Error("'Invalid club'");
     }
   }
 
