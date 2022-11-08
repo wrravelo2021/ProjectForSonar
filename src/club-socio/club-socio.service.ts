@@ -119,7 +119,7 @@ export class ClubSocioService {
       }
     }
 
-    void this.validateSocios(socios);
+    this.validateSocios(socios);
     club.socios = socios;
     return await this.clubRepository.save(club);
   }
