@@ -7,7 +7,6 @@ import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
-import { of } from 'rxjs';
 @Injectable()
 export class ClubSocioService {
   constructor(
